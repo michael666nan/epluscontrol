@@ -113,7 +113,7 @@ COPENHAGEN.epw - EnergyPlus weather file for Copenhagen
 ```
 
 **Where to find the files:**
-- The example files are available in the GitHub repository: [github.com/michael666nan/epluscontrol/tree/master/tutorial_data/](https://github.com/michael666nan/epluscontrol/tree/master/example_files/)
+- The example files are available in the GitHub repository: [github.com/michael666nan/epluscontrol/tree/master/tutorial_data/](https://github.com/michael666nan/epluscontrol/tree/master/tutorial_data/)
 - Download these files to your working directory before running the script
 - Alternatively, you can use the following command to download them directly from GitHub:
 
