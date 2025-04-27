@@ -127,7 +127,7 @@ os.makedirs("example_files", exist_ok=True)
 
 # File URLs from the GitHub repository (update these with the correct URLs)
 files = {
-    "Eplus_project_room.idf": "https://raw.githubusercontent.com/michael666nan/epluscontrol/master/tutorial_data/Eplus_project_room.idf",
+    "Eplus_Project_Room.idf": "https://raw.githubusercontent.com/michael666nan/epluscontrol/master/tutorial_data/Eplus_Project_Room.idf",
     "COPENHAGEN.epw": "https://raw.githubusercontent.com/michael666nan/epluscontrol/master/tutorial_data/COPENHAGEN.epw"
 }
 
