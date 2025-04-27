@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epluscontrol"
+version = "0.1.4"
+description = "Control systems for EnergyPlus models"
+readme = "README.md"
+authors = [{name = "Michael Dahl Knudsen", email = "mdk@cae.au.dk"}]
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "cvxpy",
+    "numpy",
+    "pandas",
+    "matplotlib",
+    # Add other dependencies as needed
+]
+
+[project.urls]
+"Homepage" = "https://github.com/michael666nan/epluscontrol"
+"Bug Tracker" = "https://github.com/michael666nan/epluscontrol/issues"
