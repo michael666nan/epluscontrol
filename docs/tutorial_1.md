@@ -19,6 +19,7 @@ Building control is the process of regulating building systems to maintain desir
 
 - **Control System**: A mechanism that regulates a process variable (temperature) to match a desired setpoint
 - **Feedback Control**: Using measurements (actual temperature) to adjust control actions (heating power)
+- **High-level vs Low-level Control**: High-level controller determines setpoints and distributes these to the low-level feedback controller
 - **Simulation**: Using EnergyPlus to model building physics and test control strategies
 - **Energy Efficiency**: Balancing comfort requirements with minimal energy consumption
 
@@ -82,29 +83,13 @@ For building thermal control:
 
 Night setback is an energy-saving strategy that reduces temperature setpoints during unoccupied or low-activity periods.
 
-### Implementation Approaches:
-
-- **Fixed Schedule**: Predetermined times for day/night transitions
-- **Occupancy-Based**: Adjustments based on occupancy detection
-- **Predictive**: Optimized schedules based on weather forecasts and building model
-
-### Energy Savings Mechanism:
-
-1. Reduced indoor-outdoor temperature difference decreases heat loss
-2. Lower average indoor temperature reduces overall energy consumption
-3. Heating systems operate less frequently during setback periods
-
-### Considerations:
-
-- **Recovery Time**: Building needs enough time to reach comfort conditions when setback ends
-- **Thermal Mass**: High thermal mass buildings have longer response times
-- **Minimum Temperature**: Preventing freezing or moisture issues
-
 ## Step-by-Step Code Walkthrough
 
 Let's examine each section of the provided example code:
 
-### Step 0: Installation (Before Running the Script)
+### Step 0: Installation and File Preparation
+
+#### 0.1 Install the Library
 
 Before using the `epluscontrol` library, you need to install it:
 
@@ -117,6 +102,50 @@ pip install epluscontrol
 - This step is performed once in your environment, not as part of the script
 - You may want to use a virtual environment to manage dependencies
 - Check the library documentation for specific version requirements
+
+#### 0.2 Download Required Files
+
+You'll need to download the example files used in this tutorial:
+
+```
+Eplus_project_room.idf - EnergyPlus input data file containing the building model
+COPENHAGEN.epw - EnergyPlus weather file for Copenhagen
+```
+
+**Where to find the files:**
+- The example files are available in the GitHub repository: [github.com/michael666nan/epluscontrol/tree/master/tutorial_data/](https://github.com/michael666nan/epluscontrol/tree/master/example_files/)
+- Download these files to your working directory before running the script
+- Alternatively, you can use the following command to download them directly from GitHub:
+
+```python
+# Optional: Download example files directly
+import requests
+import os
+
+# Create directory for files if it doesn't exist
+os.makedirs("example_files", exist_ok=True)
+
+# File URLs from the GitHub repository (update these with the correct URLs)
+files = {
+    "Eplus_project_room.idf": "https://raw.githubusercontent.com/michael666nan/epluscontrol/master/tutorial_data/Eplus_project_room.idf",
+    "COPENHAGEN.epw": "https://raw.githubusercontent.com/michael666nan/epluscontrol/master/tutorial_data/COPENHAGEN.epw"
+}
+
+# Download each file
+for filename, url in files.items():
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Check for HTTP errors
+        
+        with open(os.path.join("example_files", filename), "wb") as f:
+            f.write(response.content)
+        
+        print(f"Downloaded {filename} successfully!")
+    except Exception as e:
+        print(f"Error downloading {filename}: {e}")
+```
+
+**Note:** Make sure to update the GitHub URLs with your actual repository path.
 
 ### Step 1: Importing the Library
 
@@ -161,9 +190,9 @@ import epluscontrol as epc
 # - epw: Path to the EnergyPlus weather file for the location (Copenhagen)
 # - energyplus_dir: Directory where EnergyPlus is installed
 eplusman = epc.EPManager(
-    idf="Eplus_project_room.idf",           # energyplus model file
-    epw="COPENHAGEN.epw",                   # weather file
-    energyplus_dir="C:\EnergyPlusV24-2-0"   # energyplus directory
+    idf="example_files/Eplus_project_room.idf",  # energyplus model file (from downloaded files)
+    epw="example_files/COPENHAGEN.epw",          # weather file (from downloaded files)
+    energyplus_dir="C:\EnergyPlusV24-2-0"        # energyplus directory
     )
 
 # Configure simulation period
