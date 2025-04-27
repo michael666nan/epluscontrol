@@ -39,9 +39,6 @@ Modern building control typically implements a hierarchical structure:
 - Examples: PI/PID controllers, on-off control with hysteresis
 - Focuses on stability, disturbance rejection, and tracking performance
 
-This hierarchy allows separation of concerns:
-1. High-level controllers optimize operation without dealing with detailed dynamics
-2. Low-level controllers handle physical constraints and dynamics without needing to consider optimization objectives
 
 ## PI Controllers and Temperature Control
 
@@ -400,7 +397,8 @@ When evaluating building control strategies, several key performance indicators 
 ### 1. Energy Consumption
 - **Total Energy Use**: Overall energy consumption during the test period
 - **Peak Power Demand**: Maximum power requirement
-- **Energy Use Intensity**: Energy consumption normalized by floor area
+- **Energy Cost**: Energy costs during the test period
+- **Energy Emissions**: CO2 emmisions due to energy consumption during the test period
 
 ### 2. Thermal Comfort
 - **Temperature Violations**: Time and magnitude of deviations from setpoint
@@ -434,10 +432,6 @@ When evaluating building control strategies, several key performance indicators 
 - **Building Thermal Mass**: High thermal mass requires earlier recovery
 - **Minimum Temperature**: Ensure setback temperature prevents moisture issues
 
-### Computational Efficiency
-- **Control Time Steps**: Balance between control precision and computational load
-- **Simulation Duration**: Select representative periods for testing
-- **Variable Time Steps**: Consider using smaller steps during transitions
 
 ## Advanced Topics
 
@@ -473,10 +467,7 @@ When evaluating building control strategies, several key performance indicators 
 - Accounts for thermal interactions between zones
 - Prioritizes zones based on occupancy or importance
 
-### Weather-Predictive Control
-- Incorporates weather forecasts into control decisions
-- Pre-cools before hot periods or pre-heats before cold periods
-- Optimizes for renewable energy availability
+
 
 ## Exercises
 
@@ -484,29 +475,26 @@ When evaluating building control strategies, several key performance indicators 
 
 2. **Setback Analysis**: Experiment with different day/night setpoint combinations to find an optimal balance between energy savings and comfort. Plot energy consumption vs. comfort violation metrics for various settings.
 
-3. **Disturbance Response**: Implement a rapid outdoor temperature change scenario and compare how different control strategies respond to this disturbance.
-
-4. **Advanced Comfort Metric**: Extend the code to calculate Predicted Mean Vote (PMV) and Predicted Percentage Dissatisfied (PPD) metrics using temperature, humidity, and other factors.
-
-5. **Custom Control Strategy**: Implement a custom high-level controller that modifies setpoints based on outdoor temperature (e.g., weather-compensation curve). Compare its performance with the basic night setback.
+3. **Custom Control Strategy**: Implement a custom high-level controller that modifies setpoints based on outdoor temperature (e.g., weather-compensation curve). Compare its performance with the basic night setback.
 
 ```python
 # Example exercise implementation: Weather-compensated control
-class WeatherCompensatedControl(epc.high_level_control.BaseController):
+class WeatherCompensatedControl():
     def __init__(self, time_step, outdoor_sensor, max_setpoint=23, min_setpoint=19):
-        super().__init__(time_step)
+        self.time_step = time_step
         self.outdoor_sensor = outdoor_sensor
         self.max_setpoint = max_setpoint
         self.min_setpoint = min_setpoint
         
-    def calculate_setpoint(self, current_time, sensor_readings):
-        outdoor_temp = sensor_readings[self.outdoor_sensor]
+    def get_control_output(self, current_time, simulator):
+        outdoor_temp = simulator.sensor_manager.sensors[self.outdoor_sensor]["data"][-1]
         # Linear compensation: lower setpoint when warmer outside
         if outdoor_temp < 0:
-            return self.max_setpoint
+            setpoint =  self.max_setpoint
         elif outdoor_temp > 20:
-            return self.min_setpoint
+            setpoint = self.min_setpoint
         else:
             # Linear interpolation between limits
-            return self.max_setpoint - (outdoor_temp / 20) * (self.max_setpoint - self.min_setpoint)
+            setpoint = self.max_setpoint - (outdoor_temp / 20) * (self.max_setpoint - self.min_setpoint)
+        return setpoint, None
 ```
