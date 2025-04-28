@@ -102,7 +102,7 @@ pip install epluscontrol
 You'll need to download the example files used in this tutorial:
 
 ```
-Eplus_project_room.idf - EnergyPlus input data file containing the building model
+Eplus_Project_Room.idf - EnergyPlus input data file containing the building model
 COPENHAGEN.epw - EnergyPlus weather file for Copenhagen
 second_order.npz - Pre-trained building thermal model
 weather.csv - Weather forecast data
@@ -112,15 +112,12 @@ grid.csv - Electricity price forecast data
 **Where to find the files:**
 - The example files are available in the GitHub repository: [github.com/michael666nan/epluscontrol/tree/master/tutorial_data/](https://github.com/michael666nan/epluscontrol/tree/master/tutorial_data/)
 - Download these files to your working directory before running the script
-- Alternatively, you can use the following command to download them directly from GitHub:
+- Alternatively, you can use the following Python script to download them directly:
 
 ```python
-# Optional: Download example files directly
+# Download required files
 import requests
 import os
-
-# Create directory for files if it doesn't exist
-os.makedirs("example_files", exist_ok=True)
 
 # File URLs from the GitHub repository (update these with the correct URLs)
 files = {
@@ -134,10 +131,11 @@ files = {
 # Download each file
 for filename, url in files.items():
     try:
+        print(f"Downloading {filename}...")
         response = requests.get(url)
         response.raise_for_status()  # Check for HTTP errors
         
-        with open(os.path.join("example_files", filename), "wb") as f:
+        with open(filename, "wb") as f:  # Save directly to working directory
             f.write(response.content)
         
         print(f"Downloaded {filename} successfully!")
