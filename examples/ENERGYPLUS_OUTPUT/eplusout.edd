@@ -77,9 +77,4 @@ EnergyManagementSystem:Actuator Available,EAST WINDOW,Surface,View Factor To Gro
 EnergyManagementSystem:Actuator Available,EAST WINDOW,Surface,Outdoor Air Drybulb Temperature,[C]
 EnergyManagementSystem:Actuator Available,EAST WINDOW,Surface,Outdoor Air Wetbulb Temperature,[C]
 EnergyManagementSystem:Actuator Available,EAST WINDOW,Surface,Outdoor Air Wind Speed,[m/s]
-EnergyManagementSystem:Actuator Available,EAST WINDOW,Surface,Outdoor Air Wind Direction,[degree]
-EnergyManagementSystem:Actuator Available,ZONE 1,Zone,Outdoor Air Drybulb Temperature,[C]
-EnergyManagementSystem:Actuator Available,ZONE 1,Zone,Outdoor Air Wetbulb Temperature,[C]
-EnergyManagementSystem:Actuator Available,ZONE 1,Zone,Outdoor Air Wind Speed,[m/s]
-EnergyManagementSystem:Actuator Available,ZONE 1,Zone,Outdoor Air Wind Direction,[degree]
-EnergyManagementSystem:Actuator Available,INFILTRATION,Zone Infiltration,Air Exchange Flow Rate,[m3/s]
+EnergyManagementSys

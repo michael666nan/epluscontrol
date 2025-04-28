@@ -50,7 +50,7 @@ RunPeriod,
     1,                        !- Begin Day of Month
     ,                         !- Begin Year
     1,                        !- End Month
-    14,                       !- End Day of Month
+    7,                        !- End Day of Month
     ,                         !- End Year
     ,                         !- Day of Week for Start Day
     Yes,                      !- Use Weather File Holidays and Special Days

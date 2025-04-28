@@ -4,7 +4,7 @@ save_data_on_exit = True
 save_history = True
 save_non_project_files = False
 project_type = 'empty-project-type'
-recent_files = ['pyproject.toml', '..\\buildingsysid\\examples\\energyplus\\example1\\constrained_greybox.py', 'epluscontrol\\__init__.py', 'epluscontrol\\energyplus\\__init__.py', 'examples\\pi_nightsetback.py', 'epluscontrol\\energyplus\\energyplus_manager.py', 'epluscontrol\\control\\__init__.py', 'setup.py', 'epluscontrol\\control\\parser\\weather_parser.py', 'epluscontrol\\control\\parser\\__init__.py', 'epluscontrol\\control\\parser\\setpoint_parser.py', 'epluscontrol\\control\\low_level_control\\__init__.py', 'epluscontrol\\control\\high_level_control\\model_predictive_control.py', 'epluscontrol\\control\\low_level_control\\p.py']
+recent_files = ['examples\\tutorial_1.py', 'examples\\pi_nightsetback.py', 'epluscontrol\\control\\high_level_control\\night_setback.py', 'epluscontrol\\energyplus\\energyplus_manager.py', 'docs\\tutorial_1.md', 'examples\\tutorial_2.py', 'epluscontrol\\control\\control_managers\\standard_control_DEP.py', 'epluscontrol\\__init__.py']
 
 [main]
 version = 0.2.0

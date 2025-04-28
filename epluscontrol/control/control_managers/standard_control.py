@@ -22,8 +22,7 @@ class StandardControl(ControlStrategy):
         Returns:
             dict: Contains the 'setpoint' that was determined.
         """ 
-
-        if hasattr(simulator.high_level_control, 'control_type') and object.attribute_name == simulator.high_level_control.control_type == "direct":
+        if hasattr(simulator.high_level_control, "control_type") and simulator.high_level_control.control_type == "direct":
             #Get high-level direct control output            
             setpoint , heat_output = simulator.high_level_control.get_control_output(
                 current_time=current_time, 
