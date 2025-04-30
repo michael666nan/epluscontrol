@@ -181,7 +181,7 @@ const = epc.high_level_control.ConstantSetpoint()
 
 # Register the MPC controller with the simulation manager
 # This establishes the MPC as the high-level decision maker
-eplusman.set_high_level_control(const)
+eplusman.set_high_level_control(rand)
 
 
 # =====================================================================
@@ -245,6 +245,6 @@ _ = epc.utils.plot_smart_building_data(df)
 
 # Create interactive MPC visualization tool
 # This displays historical data and predictions at each MPC timestep
-visualizer = epc.utils.MPCVisualizer(mpc)
+#visualizer = epc.utils.MPCVisualizer(mpc)
 # To launch the interactive visualizer, call:
 # visualizer.run()

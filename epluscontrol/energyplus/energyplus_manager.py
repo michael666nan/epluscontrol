@@ -1,6 +1,6 @@
 import datetime
 import pandas as pd
-from pyenergyplus.api import EnergyPlusAPI
+import sys
 
 from epluscontrol.energyplus.utils.eppy_manager import EppyManager
 from epluscontrol.energyplus.utils.file_manager import FileManager
@@ -49,7 +49,13 @@ class EPManager:
         self.actuator_manager = ActuatorManager()
         
         # Initialize EnergyPlus API
+        if energyplus_dir is not None:
+            sys.path.insert(0, energyplus_dir)
+        from pyenergyplus.api import EnergyPlusAPI
+        
         self.api = EnergyPlusAPI()
+        
+        # Initialize simulation state
         self.state = self.api.state_manager.new_state()
 
         # Control components

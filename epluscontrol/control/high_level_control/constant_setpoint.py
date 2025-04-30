@@ -21,7 +21,7 @@ class ConstantSetpoint():
         self.sensor_name = sensor_name
     
         
-    def get_setpoint(self, current_time, *args, **kwargs):
+    def get_control_output(self, current_time, *args, **kwargs):
         """Returns the constant setpoint
         
         Args:
@@ -31,5 +31,5 @@ class ConstantSetpoint():
             float: The temperature setpoint in degrees Celsius.
         """
                 
-        return self.setpoint
+        return self.setpoint, None
 

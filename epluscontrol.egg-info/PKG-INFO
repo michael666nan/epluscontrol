@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: epluscontrol
-Version: 0.1.5
+Version: 0.1.6
 Summary: Control systems for EnergyPlus models
 Author-email: Michael Dahl Knudsen <mdk@cae.au.dk>
 License: MIT
@@ -15,6 +15,7 @@ License-File: LICENSE.txt
 Requires-Dist: cvxpy
 Requires-Dist: numpy
 Requires-Dist: pandas
+Requires-Dist: eppy
 Requires-Dist: matplotlib
 Dynamic: license-file
 

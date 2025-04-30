@@ -39,7 +39,7 @@ class RandomSetpoint():
         # Set random seed for reproducibility
         random.seed(random_seed)
         
-    def get_setpoint(self, current_time, *args, **kwargs):
+    def get_control_output(self, current_time, *args, **kwargs):
         """Calculate the setpoint with random changes at the top of each hour.
         
         At the beginning of each hour, there's a chance (change_probability) that
@@ -55,5 +55,4 @@ class RandomSetpoint():
         if current_time.minute % self.time_step == 0:
             if random.random() > (1 - self.change_probability):
                 self.setpoint = random.choice([self.min_setpoint, self.max_setpoint])
-        
-        return self.setpoint
+        return self.setpoint, None
